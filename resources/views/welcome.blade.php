@@ -21,7 +21,6 @@
     <div class="container">
       <a class="navbar-brand" href="#">
         <span class="me-2"><b>TechCrafters</b></span>
-        MyCourses
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
         <span class="navbar-toggler-icon"></span>
@@ -74,14 +73,39 @@
     </button>
   </div>
 
+  <!-- Search Bar Section -->
+<div class="my-4" style="padding: 0px 0px 22px 0px;
+    background-color: #f0f8ff47;
+    border-bottom: 2px solid hsl(225deg 4.3% 81.6% / 18%);">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+    <form class="d-flex justify-content-center">
+  <input 
+    type="search" 
+    class="form-control" 
+    placeholder="Search for anything" 
+    aria-label="Search"
+    style="
+      padding: 12px 15px 12px 35px; 
+      border-radius: 20px;
+      background: url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/icons/search.svg') no-repeat 10px center;
+      background-size: 16px 16px;
+    "
+  >
+</form>
+
+    </div>
+  </div>
+</div>
+
   <!-- Course Categories and Cards -->
   <div class="container my-4">
 
-    <h3>AWS Courses</h3>
+    <h4><b>AWS Courses</b></h4>
     <div class="row g-3 mb-4">
       <div class="col-md-3">
         <div class="card course-card">
-          <img src="https://via.placeholder.com/300x150" class="card-img-top" alt="">
+          <img src="http://127.0.0.1:8000/storage/category_thumbnails/tiAj3z7AMNs0Mnh5AJ69e82asZRPo7TvDURNn1zQ.jpg" class="card-img-top" alt="">
           <div class="card-body">
             <h5 class="card-title">AWS Basics</h5>
             <p class="card-text">Intro to AWS Cloud Services.</p>
@@ -91,7 +115,7 @@
       </div>
       <div class="col-md-3">
         <div class="card course-card">
-          <img src="https://via.placeholder.com/300x150" class="card-img-top" alt="">
+          <img src="http://127.0.0.1:8000/storage/category_thumbnails/tiAj3z7AMNs0Mnh5AJ69e82asZRPo7TvDURNn1zQ.jpg" class="card-img-top" alt="">
           <div class="card-body">
             <h5 class="card-title">AWS Advanced</h5>
             <p class="card-text">Deep dive into AWS solutions.</p>
@@ -101,7 +125,7 @@
       </div>
       <div class="col-md-3">
         <div class="card course-card">
-          <img src="https://via.placeholder.com/300x150" class="card-img-top" alt="">
+          <img src="http://127.0.0.1:8000/storage/category_thumbnails/tiAj3z7AMNs0Mnh5AJ69e82asZRPo7TvDURNn1zQ.jpg" class="card-img-top" alt="">
           <div class="card-body">
             <h5 class="card-title">AWS Advanced</h5>
             <p class="card-text">Deep dive into AWS solutions.</p>
@@ -111,7 +135,7 @@
       </div>
       <div class="col-md-3">
         <div class="card course-card">
-          <img src="https://via.placeholder.com/300x150" class="card-img-top" alt="">
+          <img src="http://127.0.0.1:8000/storage/category_thumbnails/tiAj3z7AMNs0Mnh5AJ69e82asZRPo7TvDURNn1zQ.jpg" class="card-img-top" alt="">
           <div class="card-body">
             <h5 class="card-title">AWS Advanced</h5>
             <p class="card-text">Deep dive into AWS solutions.</p>
@@ -121,11 +145,11 @@
       </div>
     </div>
 
-    <h3>JavaScript Courses</h3>
+    <h4><b>JavaScript Courses</b></h4>
     <div class="row g-3 mb-4">
       <div class="col-md-3">
         <div class="card course-card">
-          <img src="https://via.placeholder.com/300x150" class="card-img-top" alt="">
+          <img src="http://127.0.0.1:8000/storage/category_thumbnails/tiAj3z7AMNs0Mnh5AJ69e82asZRPo7TvDURNn1zQ.jpg" class="card-img-top" alt="">
           <div class="card-body">
             <h5 class="card-title">JS Fundamentals</h5>
             <p class="card-text">Learn the basics of JS programming.</p>
@@ -135,7 +159,7 @@
       </div>
       <div class="col-md-3">
         <div class="card course-card">
-          <img src="https://via.placeholder.com/300x150" class="card-img-top" alt="">
+          <img src="http://127.0.0.1:8000/storage/category_thumbnails/tiAj3z7AMNs0Mnh5AJ69e82asZRPo7TvDURNn1zQ.jpg" class="card-img-top" alt="">
           <div class="card-body">
             <h5 class="card-title">JS Advanced</h5>
             <p class="card-text">Master modern JS techniques.</p>
@@ -145,7 +169,7 @@
       </div>
       <div class="col-md-3">
         <div class="card course-card">
-          <img src="https://via.placeholder.com/300x150" class="card-img-top" alt="">
+          <img src="http://127.0.0.1:8000/storage/category_thumbnails/tiAj3z7AMNs0Mnh5AJ69e82asZRPo7TvDURNn1zQ.jpg" class="card-img-top" alt="">
           <div class="card-body">
             <h5 class="card-title">JS Advanced</h5>
             <p class="card-text">Master modern JS techniques.</p>
@@ -155,7 +179,7 @@
       </div>
       <div class="col-md-3">
         <div class="card course-card">
-          <img src="https://via.placeholder.com/300x150" class="card-img-top" alt="">
+          <img src="http://127.0.0.1:8000/storage/category_thumbnails/tiAj3z7AMNs0Mnh5AJ69e82asZRPo7TvDURNn1zQ.jpg" class="card-img-top" alt="">
           <div class="card-body">
             <h5 class="card-title">JS Advanced</h5>
             <p class="card-text">Master modern JS techniques.</p>
@@ -165,11 +189,11 @@
       </div>
     </div>
 
-    <h3>Java Courses</h3>
+    <h4><b>Java Courses</b></h4>
     <div class="row g-3 mb-4">
       <div class="col-md-3">
         <div class="card course-card">
-          <img src="https://via.placeholder.com/300x150" class="card-img-top" alt="">
+          <img src="http://127.0.0.1:8000/storage/category_thumbnails/tiAj3z7AMNs0Mnh5AJ69e82asZRPo7TvDURNn1zQ.jpg" class="card-img-top" alt="">
           <div class="card-body">
             <h5 class="card-title">Java for Beginners</h5>
             <p class="card-text">Start coding with Java today.</p>
@@ -179,7 +203,7 @@
       </div>
       <div class="col-md-3">
         <div class="card course-card">
-          <img src="https://via.placeholder.com/300x150" class="card-img-top" alt="">
+          <img src="http://127.0.0.1:8000/storage/category_thumbnails/tiAj3z7AMNs0Mnh5AJ69e82asZRPo7TvDURNn1zQ.jpg" class="card-img-top" alt="">
           <div class="card-body">
             <h5 class="card-title">Java OOP</h5>
             <p class="card-text">Master object-oriented concepts in Java.</p>
@@ -189,7 +213,7 @@
       </div>
       <div class="col-md-3">
         <div class="card course-card">
-          <img src="https://via.placeholder.com/300x150" class="card-img-top" alt="">
+          <img src="http://127.0.0.1:8000/storage/category_thumbnails/tiAj3z7AMNs0Mnh5AJ69e82asZRPo7TvDURNn1zQ.jpg" class="card-img-top" alt="">
           <div class="card-body">
             <h5 class="card-title">Java OOP</h5>
             <p class="card-text">Master object-oriented concepts in Java.</p>
@@ -199,7 +223,7 @@
       </div>
       <div class="col-md-3">
         <div class="card course-card">
-          <img src="https://via.placeholder.com/300x150" class="card-img-top" alt="">
+          <img src="http://127.0.0.1:8000/storage/category_thumbnails/tiAj3z7AMNs0Mnh5AJ69e82asZRPo7TvDURNn1zQ.jpg" class="card-img-top" alt="">
           <div class="card-body">
             <h5 class="card-title">Java OOP</h5>
             <p class="card-text">Master object-oriented concepts in Java.</p>
