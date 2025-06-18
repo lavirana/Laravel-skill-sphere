@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'SKILL Sphere',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>SKILL</b>Sphere',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -257,7 +257,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'admin/home',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -393,6 +393,61 @@ return [
                     'text' => 'Add Category',
                     'url' => 'admin/categories/add',
                 ],
+            ],
+        ], 
+        [
+            'text' => 'Reports',
+            'icon' => 'fas fa-fw fa-list',
+            'submenu' => [
+                [
+                    'text' => 'Detailed Reports',
+                    'url' => '#',
+                ],
+                [
+                    'text' => 'Course Reports',
+                    'url' => '#',
+                ],
+            ],
+        ],
+        [
+            'text' => 'Finance Reports',
+            'icon' => 'fas fa-fw fa-list',
+             'can'  => 'view-finance',
+            'submenu' => [
+                [
+                    'text' => 'General Invoice',
+                    'url' => '#',
+                ],
+                [
+                    'text' => 'Manage Invoice',
+                    'url' => '#',
+                ],
+            ],
+        ],
+        [
+            'text' => 'Downloads',
+            'icon' => 'fas fa-fw fa-list',
+            'can'  => 'view-downloads',
+            'submenu' => [
+                [
+                    'text' => 'Course Data',
+                    'url' => '#',
+                ],
+                [
+                    'text' => 'Logs',
+                    'url' => '#',
+                ],
+            ],
+        ],
+        [
+            'text' => 'Manage Users',
+            'icon' => 'fas fa-fw fa-list',
+            'can' => 'view-manage-users',
+            'submenu' => [
+                [
+                    'text' => 'Manage Users',
+                    'url' => '#',
+                ]
             ],
         ],
         /*
