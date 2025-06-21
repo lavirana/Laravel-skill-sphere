@@ -98,7 +98,10 @@ Admin panel typically runs on http://127.0.0.1:8000/admin (based on your route c
 📸 Screenshots
 Public Frontend (Home Page)
 
+
 Admin Dashboard (Course Management)
+<img width="1440" alt="Screenshot 2025-06-21 at 10 49 21 PM" src="https://github.com/user-attachments/assets/7b3869fc-cb2f-4bc2-86b7-eecd3e3602d2" />
+
 
 🧰 Tech Stack
 Backend: Laravel 10+, PHP 8.2
