@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\API\PostController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\EmailController;
+use App\Models\Post;
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,6 +32,9 @@ Route::get('/admin/register', [App\Http\Controllers\Auth\RegisterController::cla
 Route::post('/admin/register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
 
 Route::get('send-email',[EmailController::class,'sendEmail']);
+
+
+
 
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
