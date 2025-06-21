@@ -12,6 +12,33 @@
       transform: translateY(-3px);
       transition: 0.3s ease;
     }
+    .card-img-top {
+  width: 100%;
+  height: 180px; /* Set your desired height */
+  object-fit: cover; /* Crop and center the image */
+  border-radius: 8px; /* Optional: rounded corners */
+}
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  z-index: 1000;
+  min-width: 200px;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu .dropdown-item {
+  padding: 0.25rem 0;
+  white-space: nowrap;
+}
+
   </style>
 </head>
 <body>
@@ -41,16 +68,26 @@
 
   <!-- Sub menu (categories) -->
   <nav class="bg-light">
-    <div class="container">
-      <ul class="nav justify-content-center py-2">
-        <li class="nav-item"><a class="nav-link" href="#">AWS</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">JavaScript</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Java</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Python</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Machine Learning</a></li>
-      </ul>
-    </div>
-  </nav>
+  <div class="container">
+    <ul class="nav justify-content-center py-2">
+      @foreach($all_categories as $category)
+        <li class="nav-item dropdown position-relative">
+          <a class="nav-link" href="#">{{ $category->name }}</a>
+
+          @if($category->subcategories->count())
+            <ul class="dropdown-menu position-absolute">
+              @foreach($category->subcategories as $subcategory)
+                <li><a class="dropdown-item" href="#">{{ $subcategory->name }}</a></li>
+              @endforeach
+            </ul>
+          @endif
+        </li>
+      @endforeach
+    </ul>
+  </div>
+</nav>
+
+
 
   <!-- Slider -->
   <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -74,8 +111,8 @@
   </div>
 
   <!-- Search Bar Section -->
-<div class="my-4" style="padding: 0px 0px 22px 0px;
-    background-color: #f0f8ff47;
+<div class="" style="padding: 22px 0px 22px 0px;
+    background-color: #edffe4a3;
     border-bottom: 2px solid hsl(225deg 4.3% 81.6% / 18%);">
   <div class="row justify-content-center">
     <div class="col-md-8">
@@ -83,12 +120,11 @@
   <input 
     type="search" 
     class="form-control" 
-    placeholder="Search for anything" 
+    placeholder="Search for anything..." 
     aria-label="Search"
     style="
       padding: 12px 15px 12px 35px; 
       border-radius: 20px;
-      background: url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/icons/search.svg') no-repeat 10px center;
       background-size: 16px 16px;
     "
   >
@@ -99,139 +135,9 @@
 </div>
 
   <!-- Course Categories and Cards -->
-  <div class="container my-4">
+  <div class="container my-4" id="coursesContainer">
 
-    <h4><b>AWS Courses</b></h4>
-    <div class="row g-3 mb-4">
-      <div class="col-md-3">
-        <div class="card course-card">
-          <img src="http://127.0.0.1:8000/storage/category_thumbnails/tiAj3z7AMNs0Mnh5AJ69e82asZRPo7TvDURNn1zQ.jpg" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">AWS Basics</h5>
-            <p class="card-text">Intro to AWS Cloud Services.</p>
-            <a href="#" class="btn btn-primary">View</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card course-card">
-          <img src="http://127.0.0.1:8000/storage/category_thumbnails/tiAj3z7AMNs0Mnh5AJ69e82asZRPo7TvDURNn1zQ.jpg" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">AWS Advanced</h5>
-            <p class="card-text">Deep dive into AWS solutions.</p>
-            <a href="#" class="btn btn-primary">View</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card course-card">
-          <img src="http://127.0.0.1:8000/storage/category_thumbnails/tiAj3z7AMNs0Mnh5AJ69e82asZRPo7TvDURNn1zQ.jpg" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">AWS Advanced</h5>
-            <p class="card-text">Deep dive into AWS solutions.</p>
-            <a href="#" class="btn btn-primary">View</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card course-card">
-          <img src="http://127.0.0.1:8000/storage/category_thumbnails/tiAj3z7AMNs0Mnh5AJ69e82asZRPo7TvDURNn1zQ.jpg" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">AWS Advanced</h5>
-            <p class="card-text">Deep dive into AWS solutions.</p>
-            <a href="#" class="btn btn-primary">View</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <h4><b>JavaScript Courses</b></h4>
-    <div class="row g-3 mb-4">
-      <div class="col-md-3">
-        <div class="card course-card">
-          <img src="http://127.0.0.1:8000/storage/category_thumbnails/tiAj3z7AMNs0Mnh5AJ69e82asZRPo7TvDURNn1zQ.jpg" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">JS Fundamentals</h5>
-            <p class="card-text">Learn the basics of JS programming.</p>
-            <a href="#" class="btn btn-primary">View</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card course-card">
-          <img src="http://127.0.0.1:8000/storage/category_thumbnails/tiAj3z7AMNs0Mnh5AJ69e82asZRPo7TvDURNn1zQ.jpg" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">JS Advanced</h5>
-            <p class="card-text">Master modern JS techniques.</p>
-            <a href="#" class="btn btn-primary">View</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card course-card">
-          <img src="http://127.0.0.1:8000/storage/category_thumbnails/tiAj3z7AMNs0Mnh5AJ69e82asZRPo7TvDURNn1zQ.jpg" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">JS Advanced</h5>
-            <p class="card-text">Master modern JS techniques.</p>
-            <a href="#" class="btn btn-primary">View</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card course-card">
-          <img src="http://127.0.0.1:8000/storage/category_thumbnails/tiAj3z7AMNs0Mnh5AJ69e82asZRPo7TvDURNn1zQ.jpg" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">JS Advanced</h5>
-            <p class="card-text">Master modern JS techniques.</p>
-            <a href="#" class="btn btn-primary">View</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <h4><b>Java Courses</b></h4>
-    <div class="row g-3 mb-4">
-      <div class="col-md-3">
-        <div class="card course-card">
-          <img src="http://127.0.0.1:8000/storage/category_thumbnails/tiAj3z7AMNs0Mnh5AJ69e82asZRPo7TvDURNn1zQ.jpg" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">Java for Beginners</h5>
-            <p class="card-text">Start coding with Java today.</p>
-            <a href="#" class="btn btn-primary">View</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card course-card">
-          <img src="http://127.0.0.1:8000/storage/category_thumbnails/tiAj3z7AMNs0Mnh5AJ69e82asZRPo7TvDURNn1zQ.jpg" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">Java OOP</h5>
-            <p class="card-text">Master object-oriented concepts in Java.</p>
-            <a href="#" class="btn btn-primary">View</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card course-card">
-          <img src="http://127.0.0.1:8000/storage/category_thumbnails/tiAj3z7AMNs0Mnh5AJ69e82asZRPo7TvDURNn1zQ.jpg" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">Java OOP</h5>
-            <p class="card-text">Master object-oriented concepts in Java.</p>
-            <a href="#" class="btn btn-primary">View</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card course-card">
-          <img src="http://127.0.0.1:8000/storage/category_thumbnails/tiAj3z7AMNs0Mnh5AJ69e82asZRPo7TvDURNn1zQ.jpg" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">Java OOP</h5>
-            <p class="card-text">Master object-oriented concepts in Java.</p>
-            <a href="#" class="btn btn-primary">View</a>
-          </div>
-        </div>
-      </div>
-    </div>
+   
 
   </div>
 
@@ -243,7 +149,72 @@
       <p>Email: support@mycourses.com | Phone: +91-9876543210</p>
     </div>
   </footer>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    function loadData() {
+    const token = localStorage.getItem('token');
+
+    fetch('/api/courses', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.data);
+
+        const allCourses = data.data; // object: { "Category Name": [courses], ... }
+        const coursesContainer = document.getElementById('coursesContainer'); // Use correct ID
+
+        // Clear previous content
+        coursesContainer.innerHTML = '';
+
+        // Loop through each category
+        Object.entries(allCourses).forEach(([categoryName, courses]) => {
+            const categoryBlock = document.createElement('div');
+            categoryBlock.style.marginBottom = '4%'; // or any value like '2rem', '1em'
+            categoryBlock.innerHTML = `<h4>${categoryName}</h4>`;
+
+            const row = document.createElement('div');
+            row.className = 'row g-3 mb-4';
+
+            // Loop through each course under the category
+            courses.forEach(course => {
+              const shortDesc = course.description.length > 90 
+    ? course.description.substring(0, 90) + '...' 
+    : course.description;
+                const courseCard = `
+                <div class="col-md-3">
+                    <div class="card course-card">
+                       <img 
+  src="http://127.0.0.1:8000/storage/${course.image}" 
+  class="card-img-top" 
+  alt="${course.title}"
+  onerror="this.onerror=null; this.src='http://127.0.0.1:8000/storage/default-image.jpg';"
+/>
+                        <div class="card-body">
+                            <h5 class="card-title">${course.title}</h5>
+                            <p class="card-text">${shortDesc}</p>
+                            <a href="#" class="btn btn-primary">View</a>
+                        </div>
+                    </div>
+                </div>`;
+                row.innerHTML += courseCard;
+            });
+
+            categoryBlock.appendChild(row);
+            coursesContainer.appendChild(categoryBlock);
+        });
+    })
+    .catch(error => {
+        console.error('Error loading courses:', error);
+    });
+}
+
+    loadData();
+  </script>
 </body>
 </html>

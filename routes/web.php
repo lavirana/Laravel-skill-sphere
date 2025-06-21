@@ -7,11 +7,10 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\API\PostController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\HomeController;
 use App\Models\Post;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index']);
 
 //Auth::routes();
 
