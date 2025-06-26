@@ -14,34 +14,19 @@ TechCrafters is a full-featured online course marketplace inspired by Udemy, bui
 - ⚙️ Livewire Components for admin CRUD
 - 🔍 AJAX Search bar functionality
 - 🎨 Modern, responsive frontend design
-
----
-
-## 📁 Project Structure Overview
-
-app/
-├── Http/
-│ ├── Controllers/
-│ │ ├── API/
-│ │ └── Admin/
-│ └── Livewire/
-├── Models/
-│ ├── Category.php
-│ ├── SubCategory.php
-│ └── Course.php
-resources/views/
-├── welcome.blade.php
-├── livewire/
-routes/
-├── web.php
-├── api.php
-
-
 ---
 
 ## 🛡️ Admin Panel
 
 TechCrafters includes a secure admin dashboard built using AdminLTE. It allows platform managers to create, update, and delete categories, subcategories, and courses.
+
+📸 Screenshots
+Public Frontend (Home Page)
+<img width="1440" alt="Screenshot 2025-06-21 at 10 52 28 PM" src="https://github.com/user-attachments/assets/3c32a07e-524b-44d0-afe6-69e86b81b9ed" />
+
+
+Admin Dashboard (Course Management)
+<img width="1440" alt="Screenshot 2025-06-21 at 10 49 21 PM" src="https://github.com/user-attachments/assets/7b3869fc-cb2f-4bc2-86b7-eecd3e3602d2" />
 
 ### Admin Panel Features:
 
@@ -95,12 +80,8 @@ php artisan serve
 Visit http://127.0.0.1:8000 to see the frontend.
 Admin panel typically runs on http://127.0.0.1:8000/admin (based on your route config).
 
-📸 Screenshots
-Public Frontend (Home Page)
 
-Admin Dashboard (Course Management)
-
-🧰 Tech Stack
+## 🧰 Tech Stack
 Backend: Laravel 10+, PHP 8.2
 
 Frontend: Blade, jQuery, Bootstrap
@@ -117,3 +98,4 @@ Run php artisan tinker to play with models.
 Run php artisan migrate:fresh --seed for a reset.
 
 Livewire dev tools recommended (composer require livewire/livewire).
+

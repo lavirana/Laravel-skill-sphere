@@ -8,6 +8,7 @@ use App\Http\Controllers\API\PostController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Admin\Controllers\Admin\SubCategoryController;
 use App\Models\Post;
 
@@ -53,5 +54,9 @@ Route::get('send-email',[EmailController::class,'sendEmail']);
     Route::get('categories/edit/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'edit'])->name('categories.edit');
     Route::get('Categories/view/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'show'])->name('categories.show');
     Route::get('settings/profile/{id}', [App\Http\Controllers\Admin\SettingsController::class, 'edit'])->name('settings.profile.edit');
+
+    Route::get('/change-password', [App\Http\Controllers\Admin\ChangePasswordController::class, 'edit'])->name('password.edit');
+    Route::post('/change-password', [App\Http\Controllers\Admin\ChangePasswordController::class, 'update'])->name('password.update');
+    Route::get('profile',[ProfileController::class, 'index'])->name('profile.index');
    
 });
