@@ -1,17 +1,4 @@
 <div>
-<style>
-    svg {
-        width: 1.25rem !important; /* 20px */
-        height: 1.25rem !important;
-    }
-
-    .pagination svg {
-        width: 1.25rem !important;
-        height: 1.25rem !important;
-    }
-</style>
-
-
     <table class="table table-bordered table-hover">
         <thead class="thead-dark">
             <tr>
@@ -22,7 +9,7 @@
             </tr>
         </thead>
         <tbody>
-            @forelse ($categories as $category)
+            @forelse ($sub_categories as $category)
                 <tr>
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->name }}</td>
@@ -31,19 +18,17 @@
                     <a href={{"categories/edit/$category->id"}}><button class="btn btn-sm btn-primary">Edit</button></a>
                         <button class="btn btn-sm btn-danger">Delete</button>
                         <a href={{"Categories/view/$category->id"}}><button class="btn btn-sm btn-info">View</button></a>
-                        <a href={{"sub_categories/$category->id"}}><button class="btn btn-sm btn-info">View Sub Categories</button></a>
-                        <a href="{{"sub_categories/add/$category->id"}}"><button  class="btn btn-sm btn-primary">Add Sub category</button></a>
                     </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="4">No categories found.</td>
+                    <td colspan="4">No Sub Categories found.</td>
                 </tr>
             @endforelse
         </tbody>
     </table>
 
     <div class="mt-2">
-        {{ $categories->links() }}
+        {{ $sub_categories->links() }}
     </div>
 </div>
