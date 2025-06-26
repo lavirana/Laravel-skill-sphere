@@ -10,6 +10,7 @@ use App\Http\Controllers\EmailController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Admin\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Admin\UserController;
 use App\Models\Post;
 
 
@@ -58,5 +59,9 @@ Route::get('send-email',[EmailController::class,'sendEmail']);
     Route::get('/change-password', [App\Http\Controllers\Admin\ChangePasswordController::class, 'edit'])->name('password.edit');
     Route::post('/change-password', [App\Http\Controllers\Admin\ChangePasswordController::class, 'update'])->name('password.update');
     Route::get('profile',[ProfileController::class, 'index'])->name('profile.index');
-   
+    Route::get('users',[UserController::class, 'index'])->name('users.index');
+    Route::get('user/edit/{id}',[UserController::class, 'edit'])->name('user.edit');
+    Route::post('user/update/{id}',[UserController::class, 'update'])->name('user.update');
+
+    
 });

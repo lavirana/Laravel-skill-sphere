@@ -410,6 +410,20 @@ return [
             ],
         ],
         [
+            'text' => 'Users',
+            'icon' => 'fas fa-fw fa-list',
+            'submenu' => [
+                [
+                    'text' => 'All Users',
+                    'url' => 'admin/users',
+                ],
+                [
+                    'text' => 'Add User',
+                    'url' => '#',
+                ],
+            ],
+        ],
+        [
             'text' => 'Finance Reports',
             'icon' => 'fas fa-fw fa-list',
              'can'  => 'view-finance',
