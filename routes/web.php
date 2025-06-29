@@ -11,8 +11,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Admin\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\VideoController;
 use App\Models\Post;
-
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -22,6 +22,19 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/admin', function () {
     return redirect()->route('login');
 })->name('admin');
+
+Route::get('store_user',[App\Http\Controllers\Admin\UserController::class, 'store_static_user']);
+Route::get('update_user',[App\Http\Controllers\Admin\UserController::class, 'update_static_user']);
+Route::get('show_user_post',[App\Http\Controllers\Admin\UserController::class, 'show_user_post']);
+Route::get('show_comments',[App\Http\Controllers\VideoController::class, 'index']);
+Route::get('show_video_comments/{id}',[App\Http\Controllers\VideoController::class, 'show']);
+Route::get('posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('show_best_c', [VideoController::class, 'show_best'])->name('posts.show_best');
+Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::get('create_post_with_tag',[App\Http\Controllers\PostController::class, 'create']);
+Route::get('show_tag_posts',[App\Http\Controllers\TagController::class, 'index']);
+
+
 
 Route::get('/admin/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('admin.login');
 Route::get('/admin/login', [LoginController::class, 'showLoginForm'])->name('admin.login');
@@ -62,6 +75,7 @@ Route::get('send-email',[EmailController::class,'sendEmail']);
     Route::get('users',[UserController::class, 'index'])->name('users.index');
     Route::get('user/edit/{id}',[UserController::class, 'edit'])->name('user.edit');
     Route::post('user/update/{id}',[UserController::class, 'update'])->name('user.update');
-
+    Route::get('user/add',[UserController::class, 'create'])->name('user.add');
+    Route::post('user/store',[UserController::class, 'store'])->name('user.store');
     
 });

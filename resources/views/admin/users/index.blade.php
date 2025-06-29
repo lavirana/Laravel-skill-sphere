@@ -24,9 +24,9 @@
     <h4 style="margin-top: 8px !important;" >Users</h4>
     </div>
     <div class="col-md-6">
-    <a href="#"><button style="    float: right;
+    <a href={{"user/add"}}><button style="float: right;
     margin-bottom: 8px;
-    border-radius: 0px;" class="btn btn-primary" >Add New User</button> </a>  
+    border-radius: 0px;" class="btn btn-primary">Add New User</button> </a>  
     </div>
 </div>
 

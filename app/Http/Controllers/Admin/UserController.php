@@ -35,15 +35,77 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.add_user');
     }
+
+
+
+    /**
+     * Store a newly created static user in storage.
+     * This method is not used in the current implementation.
+     */
+    public function store_static_user(){
+        User::UpdateOrCreate(
+            ['name' => 'Ashish','email' => 'lavi191@gmail.com'],
+            [
+                "password" => Hash::make('password'),
+                'role' => 'admin',
+                'email_verified_at' => now(),
+                'created_at' => now(),
+                'updated_at' => now(),
+                'remember_token' => null,
+             ]
+            );      
+        // $res = User::get(); 
+        // dd($res);
+    }
+
+    public function update_static_user(){
+        User::upsert(
+            [
+                "name" => "Ashish R",
+                "email" => "ashishrana288@gmail.com",
+                "password" => Hash::make('password'),
+            ],
+            ["email"],
+            ["name"]
+        );
+    }
+
+public function show_user_post(){
+    $user_posts =  User::where('id', 3)->withWhereHas('post',function($query){
+$query->where('title', 'post 1');
+    })->get();
+
+    dd($user_posts);
+}
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required|string|max:255',
+            'email' => ['required', 'email', Rule::unique('users')],
+            'password' => 'required|string|min:8',
+           //'password_confirmation' => 'required|string|min:8'
+        ]);
+
+        $user = new User();
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->role = $request->input('role', 'user'); // Default role is 'user'
+        $user->password = Hash::make($request->input('password'));
+        $user->save();
+         // session()->flash('success', 'New User has been created successfully');
+         // session()->flash('error', 'Something went wrong');
+         // Reset the form fields
+        $request->session()->flash('success', 'New User has been created successfully');
+        $request->session()->flash('error', 'Something went wrong');
+
+       return redirect()->route('users');
+
     }
 
     /**
@@ -51,7 +113,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+     //
     }
 
     /**
