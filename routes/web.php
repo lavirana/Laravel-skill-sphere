@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\VideoController;
 use App\Models\Post;
 
+
 Route::get('/', [HomeController::class, 'index']);
 
 //Auth::routes();
@@ -23,6 +24,8 @@ Route::get('/admin', function () {
     return redirect()->route('login');
 })->name('admin');
 
+
+//only for practice//
 Route::get('store_user',[App\Http\Controllers\Admin\UserController::class, 'store_static_user']);
 Route::get('update_user',[App\Http\Controllers\Admin\UserController::class, 'update_static_user']);
 Route::get('show_user_post',[App\Http\Controllers\Admin\UserController::class, 'show_user_post']);
@@ -33,6 +36,10 @@ Route::get('show_best_c', [VideoController::class, 'show_best'])->name('posts.sh
 Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::get('create_post_with_tag',[App\Http\Controllers\PostController::class, 'create']);
 Route::get('show_tag_posts',[App\Http\Controllers\TagController::class, 'index']);
+Route::get('show_user_posts',[App\Http\Controllers\UserController::class, 'index']);
+Route::get('delete_user_posts',[App\Http\Controllers\UserController::class, 'create']);
+Route::get('active_users',[App\Http\Controllers\UserController::class, 'get_user']);
+Route::get('home',[App\Http\Controllers\HomeController::class, 'show'])->name('home');
 
 
 

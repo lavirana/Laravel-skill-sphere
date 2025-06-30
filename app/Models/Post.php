@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
@@ -20,4 +21,12 @@ class Post extends Model
     public function tags(){
         return $this->morphToMany(Tag::class,'taggable');
     }
+
+    protected static function booted():void{
+    {
+        static::addGlobalScope('userdetail',function(Builder $builder){
+                $builder->where('role' , 'user');
+        });
+    }
+}
 }

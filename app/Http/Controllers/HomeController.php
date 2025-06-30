@@ -27,5 +27,11 @@ class HomeController extends Controller
         $all_categories = Category::with('subcategories')->get();
         return view('welcome', compact('all_categories'));
     }
+
+    public function show()
+    {
+        $all_categories = Category::with('subcategories')->get();
+        return view('home', compact('all_categories'));
+    }
     
 }

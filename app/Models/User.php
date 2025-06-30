@@ -48,7 +48,37 @@ class User extends Authenticatable
         ];
     }
 
-    public function post(){
+    public function post()
+    {
         return $this->hasMany(Post::class);
+    }
+    protected static function booted(): void
+    {
+        static::deleted(function ($user) {
+            $user->post()->delete();
+        });
+    }
+    public function scopeActive($query)
+    {
+        return $query->where('role', 'user');
+    }
+
+    public function scopeSort($query)
+    {
+        return $query->orderBy('created_at', 'desc');
+    }
+
+    public function getNameAttribute($value)
+    {
+        return ucfirst($value);  // e.g. "rahul" → "Rahul"
+    }
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+
+    public function setEmailAttribute($value){
+        $this->attributes['email'] = strtolower($value);
     }
 }
