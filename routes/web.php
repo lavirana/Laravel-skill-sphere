@@ -13,7 +13,8 @@ use App\Admin\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\VideoController;
 use App\Models\Post;
-
+use App\Http\Middleware\ValidUser;
+use App\Http\Middleware\TestUser;
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -39,9 +40,17 @@ Route::get('show_tag_posts',[App\Http\Controllers\TagController::class, 'index']
 Route::get('show_user_posts',[App\Http\Controllers\UserController::class, 'index']);
 Route::get('delete_user_posts',[App\Http\Controllers\UserController::class, 'create']);
 Route::get('active_users',[App\Http\Controllers\UserController::class, 'get_user']);
-Route::get('home',[App\Http\Controllers\HomeController::class, 'show'])->name('home');
 
 
+/* Route::middleware(['IsUserValid',TestUser::class])->group(function(){
+    Route::get('home',[App\Http\Controllers\HomeController::class, 'show'])->name('home');
+ });*/
+
+ /*Route::middleware(['ok-user'])->group(function(){
+    Route::get('home',[App\Http\Controllers\HomeController::class, 'show'])->name('home');
+ });*/
+
+    Route::get('home',[App\Http\Controllers\HomeController::class, 'show'])->name('home')->middleware(['IsUserValid:admin', TestUser::class]);
 
 Route::get('/admin/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('admin.login');
 Route::get('/admin/login', [LoginController::class, 'showLoginForm'])->name('admin.login');
