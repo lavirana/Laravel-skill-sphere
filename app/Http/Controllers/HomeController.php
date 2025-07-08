@@ -25,13 +25,22 @@ class HomeController extends Controller
     public function index()
     {
         $all_categories = Category::with('subcategories')->get();
-        return view('welcome', compact('all_categories'));
+        $categories = Category::with('courses')->get();
+        return view('welcome', compact('all_categories','categories'));
     }
 
     public function show()
     {
         $all_categories = Category::with('subcategories')->get();
         return view('home', compact('all_categories'));
+    }
+
+    public function search(Request $request){
+        $query = $request->input('query');
+        $categories = Category::with(['courses' => function ($q) use ($query) {
+            $q->where('title', 'like', "%$query%");
+        }])->get();
+        return view('search_results', compact('categories'))->render();
     }
     
 }

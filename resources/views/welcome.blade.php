@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  @livewireStyles 
   <style>
     .course-card:hover {
       box-shadow: 0 4px 10px rgba(0,0,0,0.15);
@@ -72,8 +74,7 @@
     <ul class="nav justify-content-center py-2">
       @foreach($all_categories as $category)
         <li class="nav-item dropdown position-relative">
-          <a class="nav-link" href="#">{{ $category->name }}</a>
-
+          <a class="nav-link" href={{ "category-courses/$category->id" }}>{{ $category->name }}</a>
           @if($category->subcategories->count())
             <ul class="dropdown-menu position-absolute">
               @foreach($category->subcategories as $subcategory)
@@ -86,8 +87,6 @@
     </ul>
   </div>
 </nav>
-
-
 
   <!-- Slider -->
   <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -116,30 +115,33 @@
     border-bottom: 2px solid hsl(225deg 4.3% 81.6% / 18%);">
   <div class="row justify-content-center">
     <div class="col-md-8">
-    <form class="d-flex justify-content-center">
+  <form class="d-flex justify-content-center">
   <input 
     type="search" 
     class="form-control" 
     placeholder="Search for anything..." 
     aria-label="Search"
+    id="search"
     style="
       padding: 12px 15px 12px 35px; 
       border-radius: 20px;
       background-size: 16px 16px;
-    "
-  >
-</form>
-
+    "></form>
     </div>
   </div>
 </div>
+  <!--<div class="container my-4" id="coursesContainer"></div>-->
 
-  <!-- Course Categories and Cards -->
   <div class="container my-4" id="coursesContainer">
 
-   
+  <div id="results">
+    
+        @include('search_results', ['categories' => $categories])
+    </div>
 
-  </div>
+    </div>
+
+
 
   <!-- Footer -->
   <footer class="bg-dark text-white mt-auto py-4">
@@ -149,10 +151,27 @@
       <p>Email: support@mycourses.com | Phone: +91-9876543210</p>
     </div>
   </footer>
+  @livewireScripts 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $('#search').on('input', function () {
+            let query = $(this).val();
 
-  <script>
+            $.ajax({
+                url: '/ajax-search',
+                method: 'GET',
+                data: { query: query },
+                success: function (data) {
+                    $('#results').html(data);
+                }
+            });
+        });
+    </script>
+
+
+
+  <!--<script>
     function loadData() {
     const token = localStorage.getItem('token');
 
@@ -215,6 +234,7 @@
 }
 
     loadData();
-  </script>
+  </script>-->
+  
 </body>
 </html>

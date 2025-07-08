@@ -1,11 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Course Platform</title>
+  <title>Course Detail</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  
   <style>
     .course-card:hover {
       box-shadow: 0 4px 10px rgba(0,0,0,0.15);
@@ -72,7 +75,7 @@
     <ul class="nav justify-content-center py-2">
       @foreach($all_categories as $category)
         <li class="nav-item dropdown position-relative">
-          <a class="nav-link" href="{{ category-courses }}/2">{{ $category->name }}</a>
+          <a class="nav-link" href="#">{{ $category->name }}</a>
 
           @if($category->subcategories->count())
             <ul class="dropdown-menu position-absolute">
@@ -87,52 +90,43 @@
   </div>
 </nav>
 
-
-
-
-<div class="container">
-    <div class="row justify-content-center">
+<div class="container my-5">
+    <div class="row">
         <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+<div class="container my-4" id="coursesContainer">
+        <h4 style="margin: 15px 0 5px;">{{ $category_courses->name }}</h4>
+        <div class="row mb-4">
+        @foreach($category_courses['courses'] as $cat_courses)
+                <div class="col-md-3 mb-3">
+                    <div class="card">
+                    <img src="{{ asset('storage/' . $cat_courses->image) }}"
+                        onerror="this.onerror=null; this.src='http://127.0.0.1:8000/storage/default-image.jpg';"
+                        class="card-img-top" style="height: 150px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $cat_courses->title }}</h5>
+                            <p class="card-text">{{ Str::limit($cat_courses->description, 60) }}</p>
+                            <!--<a href="#" class="btn btn-primary btn-sm">View</a>-->
+                            <a href="http://127.0.0.1:8000/course-detail/1" class="btn btn-primary btn-sm">View</a>
                         </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+                    </div>
                 </div>
-            </div>
+        @endforeach
+
+            </div>                             
+    </div>
 
 
-            <x-alert type="danger">
-<x-slot:title>
-Heading goes here!
-</x-slot>
-  <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-  <hr>
-  <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
 
-            </x-alert>
 
-          <!--  @php
-            $message =  "This is success message alert.";
-            @endphp
 
-            <x-alert type="success" :$message />
-            <x-alert type="danger" id="firstAlert" class="m-4" role="flash"  message="This is error message alert."/>
-            <x-alert type="info" message="This is info message alert."/> -->
+
+
+
 
         </div>
-
+    </div>
 </div>
-
-</div>
-
-
 
   <!-- Footer -->
   <footer class="bg-dark text-white mt-auto py-4">
@@ -142,7 +136,5 @@ Heading goes here!
       <p>Email: support@mycourses.com | Phone: +91-9876543210</p>
     </div>
   </footer>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
-  </html>
+</body>
+</html>

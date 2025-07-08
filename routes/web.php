@@ -8,6 +8,7 @@ use App\Http\Controllers\API\PostController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\API\CourseSearchController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Admin\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\UserController;
@@ -15,6 +16,8 @@ use App\Http\Controllers\VideoController;
 use App\Models\Post;
 use App\Http\Middleware\ValidUser;
 use App\Http\Middleware\TestUser;
+use App\Livewire\SearchCourses;
+
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -24,6 +27,11 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/admin', function () {
     return redirect()->route('login');
 })->name('admin');
+
+Route::get('test_ajax',[App\Http\Controllers\CourseSearchController::class, 'index']);
+Route::get('ajax-search',[App\Http\Controllers\CourseSearchController::class, 'search']);
+Route::get('/course-detail/{id}', [App\Http\Controllers\CourseController::class, 'show'])->name('course.show');
+Route::get('/category-courses/{cat_id}', [App\Http\Controllers\CategoryController::class, 'category_courses'])->name('category-courses');
 
 
 //only for practice//

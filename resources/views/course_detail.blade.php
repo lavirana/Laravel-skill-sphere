@@ -1,11 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Course Platform</title>
+  <title>Course Detail</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  
   <style>
     .course-card:hover {
       box-shadow: 0 4px 10px rgba(0,0,0,0.15);
@@ -54,7 +57,7 @@
       </button>
       <div class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" href="{{ url('/') }}">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="#">All Courses</a></li>
           <li class="nav-item"><a class="nav-link" href="#">About</a></li>
         </ul>
@@ -72,7 +75,7 @@
     <ul class="nav justify-content-center py-2">
       @foreach($all_categories as $category)
         <li class="nav-item dropdown position-relative">
-          <a class="nav-link" href="{{ category-courses }}/2">{{ $category->name }}</a>
+          <a class="nav-link" href="#">{{ $category->name }}</a>
 
           @if($category->subcategories->count())
             <ul class="dropdown-menu position-absolute">
@@ -87,53 +90,27 @@
   </div>
 </nav>
 
-
-
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-
-
-            <x-alert type="danger">
-<x-slot:title>
-Heading goes here!
-</x-slot>
-  <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-  <hr>
-  <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-
-            </x-alert>
-
-          <!--  @php
-            $message =  "This is success message alert.";
-            @endphp
-
-            <x-alert type="success" :$message />
-            <x-alert type="danger" id="firstAlert" class="m-4" role="flash"  message="This is error message alert."/>
-            <x-alert type="info" message="This is info message alert."/> -->
-
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-5">
+            <img src="{{ asset('storage/' . $course->image) }}" class="img-fluid rounded" alt="{{ $course->title }}">
         </div>
 
+        <div class="col-md-7">
+            <h2>{{ $course->title }}</h2>
+            <p class="text-muted mb-2"><strong>Category:</strong> {{ $course->category->title ?? 'N/A' }}</p>
+            <p>{{ $course->description }}</p>
+
+            <ul class="list-group mt-4">
+                <li class="list-group-item"><strong>Price:</strong> ₹{{ $course->price }}</li>
+                <li class="list-group-item"><strong>Rating:</strong> {{ $course->rating }}/5</li>
+                <li class="list-group-item"><strong>Posted On:</strong> {{ $course->created_at->format('d M Y') }}</li>
+            </ul>
+
+            <a href="#" class="btn btn-primary mt-3">Enroll Now</a>
+        </div>
+    </div>
 </div>
-
-</div>
-
-
-
   <!-- Footer -->
   <footer class="bg-dark text-white mt-auto py-4">
     <div class="container text-center">
@@ -142,7 +119,5 @@ Heading goes here!
       <p>Email: support@mycourses.com | Phone: +91-9876543210</p>
     </div>
   </footer>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
-  </html>
+</body>
+</html>
