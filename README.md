@@ -24,10 +24,6 @@ TechCrafters includes a secure admin dashboard built using AdminLTE. It allows p
 Public Frontend (Home Page)
 <img width="1440" alt="Screenshot 2025-06-21 at 10 52 28 PM" src="https://github.com/user-attachments/assets/3c32a07e-524b-44d0-afe6-69e86b81b9ed" />
 
-<img width="1436" alt="Screenshot 2025-07-09 at 4 09 20 PM" src="https://github.com/user-attachments/assets/f7b0d2b2-c26f-4970-b63c-5067fa447384" />
-
-<img width="1434" alt="Screenshot 2025-07-09 at 4 09 27 PM" src="https://github.com/user-attachments/assets/54536563-9194-4e05-9eae-859dac740232" />
-
 <img width="1434" alt="Screenshot 2025-07-09 at 4 09 36 PM" src="https://github.com/user-attachments/assets/240d252c-8a3a-4d10-b07d-5a21cdd3e947" />
 
 <img width="1440" alt="Screenshot 2025-07-09 at 10 21 50 PM" src="https://github.com/user-attachments/assets/0cbc3634-43a1-415d-8dea-2e5acd11e7dd" />
