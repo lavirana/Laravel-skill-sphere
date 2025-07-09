@@ -39,6 +39,8 @@ Admin Dashboard (Course Management)
 
 <img width="1434" alt="Screenshot 2025-07-09 at 5 03 55 PM" src="https://github.com/user-attachments/assets/8eacc0f0-1a5b-4b95-8311-79bcfe511789" />
 
+<img width="1427" alt="Screenshot 2025-07-09 at 5 03 42 PM" src="https://github.com/user-attachments/assets/6e52b87e-bbc0-4689-a459-351892afba80" />
+
 
 ### Admin Panel Features:
 
