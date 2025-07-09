@@ -30,6 +30,7 @@ Public Frontend (Home Page)
 
 <img width="1434" alt="Screenshot 2025-07-09 at 4 09 36 PM" src="https://github.com/user-attachments/assets/240d252c-8a3a-4d10-b07d-5a21cdd3e947" />
 
+<img width="1440" alt="Screenshot 2025-07-09 at 10 21 50 PM" src="https://github.com/user-attachments/assets/0cbc3634-43a1-415d-8dea-2e5acd11e7dd" />
 
 
 Admin Dashboard (Course Management)
