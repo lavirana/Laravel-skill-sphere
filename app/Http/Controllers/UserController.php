@@ -37,4 +37,44 @@ echo $user->name;
        //$all_active_users =  User::sort()->get();   //with scopeActive method
         return $users;
      }
+
+
+     public function signup(){
+         return view('signup');
+     }
+
+     public function user_signup(Request $request){
+           $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            //'password' => 'required|string|min:8|confirmed',
+        ]);
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password), // Hash the password
+        ]);
+
+        $request->session()->flash('success', 'New User has been created successfully');
+        $request->session()->flash('error', 'Something went wrong');
+
+       return redirect()->route('signup');
+
+     }
+
+     public function login(){
+            return view('login');
+     }
+
+     public function user_login(Request $request){
+        // Validate the request
+        request()->validate([
+            'email' => 'required|email',
+            'password' => 'required|string|min:8',
+        ]);
+        dd(request()->all());
+     }
+
+
+
 }

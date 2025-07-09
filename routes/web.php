@@ -28,10 +28,19 @@ Route::get('/admin', function () {
     return redirect()->route('login');
 })->name('admin');
 
+
+Route::get('signup', [App\Http\Controllers\UserController::class, 'signup'])->name('signup'); 
+Route::post('user_signup', [App\Http\Controllers\UserController::class, 'user_signup'])->name('user_signup');
+Route::get('login', [App\Http\Controllers\UserController::class, 'login'])->name('user.login');
+Route::post('user_login', [App\Http\Controllers\UserController::class, 'user_login'])->name('user_login');
+
+
 Route::get('test_ajax',[App\Http\Controllers\CourseSearchController::class, 'index']);
 Route::get('ajax-search',[App\Http\Controllers\CourseSearchController::class, 'search']);
 Route::get('/course-detail/{id}', [App\Http\Controllers\CourseController::class, 'show'])->name('course.show');
 Route::get('/category-courses/{cat_id}', [App\Http\Controllers\CategoryController::class, 'category_courses'])->name('category-courses');
+
+
 
 
 //only for practice//
@@ -49,14 +58,6 @@ Route::get('show_user_posts',[App\Http\Controllers\UserController::class, 'index
 Route::get('delete_user_posts',[App\Http\Controllers\UserController::class, 'create']);
 Route::get('active_users',[App\Http\Controllers\UserController::class, 'get_user']);
 
-
-/* Route::middleware(['IsUserValid',TestUser::class])->group(function(){
-    Route::get('home',[App\Http\Controllers\HomeController::class, 'show'])->name('home');
- });*/
-
- /*Route::middleware(['ok-user'])->group(function(){
-    Route::get('home',[App\Http\Controllers\HomeController::class, 'show'])->name('home');
- });*/
 
     Route::get('home',[App\Http\Controllers\HomeController::class, 'show'])->name('home')->middleware(['IsUserValid:admin', TestUser::class]);
 
@@ -78,11 +79,13 @@ Route::get('send-email',[EmailController::class,'sendEmail']);
         return view('admin.dashboard');  // Or whatever view you want
     })->name('admin.home');
 
-    Route::get('courses/add', [App\Http\Controllers\Admin\CourseController::class, 'create'])->name('courses.add');
-    Route::get('courses', [App\Http\Controllers\Admin\CourseController::class, 'index'])->name('courses');
-    Route::get('courses/{id}', [App\Http\Controllers\Admin\CourseController::class, 'show'])->name('courses.show');
-    Route::post('courses/store', [App\Http\Controllers\Admin\CourseController::class, 'store'])->name('courses.store');
-    Route::get('courses/edit/{id}', [App\Http\Controllers\Admin\CourseController::class, 'edit'])->name('courses.edit');
+    Route::prefix('courses')->group(function(){
+        Route::get('/add', [App\Http\Controllers\Admin\CourseController::class, 'create'])->name('courses.add');
+        Route::get('/', [App\Http\Controllers\Admin\CourseController::class, 'index'])->name('courses');
+        Route::get('/{id}', [App\Http\Controllers\Admin\CourseController::class, 'show'])->name('courses.show');
+        Route::post('/store', [App\Http\Controllers\Admin\CourseController::class, 'store'])->name('courses.store');
+        Route::get('/edit/{id}', [App\Http\Controllers\Admin\CourseController::class, 'edit'])->name('courses.edit');    
+    });
 
     Route::get('sub_categories/{id}', [App\Http\Controllers\Admin\SubCategoryController::class, 'index'])->name('sub_categories.show');
     Route::get('sub_categories/add/{id}', [App\Http\Controllers\Admin\SubCategoryController::class, 'create'])->name('sub_categories.add');
