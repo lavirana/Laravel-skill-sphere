@@ -28,6 +28,9 @@ Public Frontend (Home Page)
 
 <img width="1440" alt="Screenshot 2025-07-09 at 10 21 50 PM" src="https://github.com/user-attachments/assets/0cbc3634-43a1-415d-8dea-2e5acd11e7dd" />
 
+<img width="1434" alt="Screenshot 2025-07-10 at 6 50 48 AM" src="https://github.com/user-attachments/assets/cef32529-f85d-4816-957a-f17a29a3db3e" />
+
+<img width="1435" alt="Screenshot 2025-07-10 at 6 50 38 AM" src="https://github.com/user-attachments/assets/ede64480-b526-4c8a-90c7-f95012c4fd05" />
 
 
 
