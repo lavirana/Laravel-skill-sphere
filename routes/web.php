@@ -17,6 +17,7 @@ use App\Models\Post;
 use App\Http\Middleware\ValidUser;
 use App\Http\Middleware\TestUser;
 use App\Livewire\SearchCourses;
+use App\Http\Controllers\OrderController;
 
 
 Route::get('/', [HomeController::class, 'index']);
@@ -29,10 +30,19 @@ Route::get('/admin', function () {
 })->name('admin');
 
 
+// web.php or api.php
+Route::post('/send-message', [App\Http\Controllers\HomeController::class, 'sendMessage']);
+
+
 Route::get('signup', [App\Http\Controllers\UserController::class, 'signup'])->name('signup'); 
 Route::post('user_signup', [App\Http\Controllers\UserController::class, 'user_signup'])->name('user_signup');
-Route::get('login', [App\Http\Controllers\UserController::class, 'login'])->name('user.login');
+Route::get('ulogin', [App\Http\Controllers\UserController::class, 'ulogin'])->name('ulogin');
 Route::post('user_login', [App\Http\Controllers\UserController::class, 'user_login'])->name('user_login');
+Route::get('dashboard', [App\Http\Controllers\UserController::class, 'dashboard'])->middleware('auth')
+->name('dashboard');
+Route::post('ulogout', function () { Auth::logout(); return redirect()->route('ulogin'); })->name('ulogout');
+Route::get('edit_profile', [App\Http\Controllers\UserController::class, 'edit_profile'])->middleware('auth')->name('edit_profile');
+Route::post('update_profile', [App\Http\Controllers\UserController::class, 'update_profile'])->middleware('auth')->name('update_profile');
 
 
 Route::get('test_ajax',[App\Http\Controllers\CourseSearchController::class, 'index']);
@@ -66,7 +76,7 @@ Route::get('/admin/login', [LoginController::class, 'showLoginForm'])->name('adm
 // Alias admin.login as login, so route('login') works
 Route::get('/admin/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/admin/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
-Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+Route::post('admin/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 Route::get('/admin/register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('admin.register');
 Route::post('/admin/register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
 Route::get('send-email',[EmailController::class,'sendEmail']);

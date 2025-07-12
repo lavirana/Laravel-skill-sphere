@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\category;
+use App\Models\Course;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -62,8 +65,19 @@ echo $user->name;
 
      }
 
-     public function login(){
+     public function ulogin(){
             return view('login');
+     }
+
+     public function edit_profile(){
+        // This method can be used to show the edit profile form
+        $user = Auth::user(); // Get the currently authenticated user
+        return view('edit_profile', ['user' => $user]);
+     }
+
+
+     public function update_profile(Request $request){
+        dd($request->all());
      }
 
      public function user_login(Request $request){
@@ -72,7 +86,27 @@ echo $user->name;
             'email' => 'required|email',
             'password' => 'required|string|min:8',
         ]);
-        dd(request()->all());
+
+        // Attempt to log the user in
+        $credentials = $request->only('email', 'password');
+
+          // Attempt to log the user in
+    if (Auth::attempt($credentials)) {
+        // Redirect to dashboard or home
+        return redirect()->route('dashboard')->with('success', 'Login successful!');
+    }
+     // Redirect back with error
+     return back()->withErrors([
+         'email' => 'Invalid credentials.',
+     ])->withInput();
+
+    
+     }
+
+     public function dashboard(){
+        $all_categories = category::with('subcategories')->get();
+       // You can pass the course data to the view if needed
+        return view('dashboard', ['all_categories' => $all_categories]);
      }
 
 

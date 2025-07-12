@@ -60,10 +60,40 @@
           <li class="nav-item"><a class="nav-link" href="#">All Courses</a></li>
           <li class="nav-item"><a class="nav-link" href="#">About</a></li>
         </ul>
-        <div class="d-flex">
-          <a href="login" class="btn btn-outline-light me-2">Login</a>
-          <a href="signup" class="btn btn-primary">Signup</a>
-        </div>
+
+
+        <div class="flex items-center space-x-4">
+    @auth
+     <!-- If user is logged in: Show profile dropdown -->
+<div class="dropdown">
+    <button class="btn btn-outline-dark dropdown-toggle d-flex align-items-center" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="color: var(--bs-btn-hover-color);
+    background-color: var(--bs-btn-hover-bg);
+    border-color: var(--bs-btn-hover-border-color);">
+        <span class="bg-dark text-white rounded-circle d-flex justify-content-center align-items-center" style="width: 35px; height: 35px;">
+            {{ strtoupper(Auth::user()->name[0]) }}
+        </span>
+        <span class="ms-2">{{ Auth::user()->name }}</span>
+    </button>
+
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+        <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
+        <li><a class="dropdown-item" href="{{ route('edit_profile') }}">Edit Profile</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li>
+            <form method="POST" action="{{ route('ulogout') }}">
+                @csrf
+                <button type="submit" class="dropdown-item">Logout</button>
+            </form>
+        </li>
+    </ul>
+</div>
+
+    @else
+        <!-- If not logged in: Show login and signup buttons -->
+        <a href="ulogin" class="btn btn-outline-light me-2">Log in</a>
+        <a href="signup" class="btn btn-primary">Sign up</a>
+    @endauth
+</div>
       </div>
     </div>
   </nav>
