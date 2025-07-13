@@ -19,6 +19,11 @@ use App\Http\Middleware\TestUser;
 use App\Livewire\SearchCourses;
 use App\Http\Controllers\OrderController;
 
+Route::get('/macro-test', function () {
+    $data = collect(['hello', 'world']);
+
+    return $data->toUpper(); // should return ['HELLO', 'WORLD']
+});
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -33,6 +38,17 @@ Route::get('/admin', function () {
 // web.php or api.php
 Route::post('/send-message', [App\Http\Controllers\HomeController::class, 'sendMessage']);
 
+Route::get('check_provider', [App\Http\Controllers\HomeController::class, 'check_service_provider'])->name('check_provider');
+
+Route::get('sum', [App\Http\Controllers\HomeController::class, 'sum'])->name('sum');
+
+Route::get('send_message', [App\Http\Controllers\HomeController::class, 'sendMessage2'])->name('send_message');
+Route::get('check-macro', [App\Http\Controllers\HomeController::class, 'check_macro'])->name('check_macro');
+Route::get('check-macro2',[App\Http\Controllers\HomeController::class, 'check_macro2']);
+Route::get('check-macro3', [App\Http\Controllers\HomeController::class, 'check_macro3']);
+Route::get('check-macro4', [App\Http\Controllers\HomeController::class, 'check_macro4']);
+
+Route::get('charge', [App\Http\Controllers\HomeController::class, 'charge'])->name('charge');
 
 Route::get('signup', [App\Http\Controllers\UserController::class, 'signup'])->name('signup'); 
 Route::post('user_signup', [App\Http\Controllers\UserController::class, 'user_signup'])->name('user_signup');
@@ -59,13 +75,16 @@ Route::get('update_user',[App\Http\Controllers\Admin\UserController::class, 'upd
 Route::get('show_user_post',[App\Http\Controllers\Admin\UserController::class, 'show_user_post']);
 Route::get('show_comments',[App\Http\Controllers\VideoController::class, 'index']);
 Route::get('show_video_comments/{id}',[App\Http\Controllers\VideoController::class, 'show']);
-Route::get('posts', [PostController::class, 'index'])->name('posts.index');
-Route::get('show_best_c', [VideoController::class, 'show_best'])->name('posts.show_best');
-Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
+
+
+Route::get('posts', [PostController::class, 'index'])->name('posts.index')->middleware('throttle:5,1');
+Route::get('show_best_c', [VideoController::class, 'show_best'])->name('posts.show_best')->middleware('throttle:5,1');
+Route::get('posts/create', [PostController::class, 'create'])->name('posts.create')->middleware('throttle:5,1');
 Route::get('create_post_with_tag',[App\Http\Controllers\PostController::class, 'create']);
 Route::get('show_tag_posts',[App\Http\Controllers\TagController::class, 'index']);
 Route::get('show_user_posts',[App\Http\Controllers\UserController::class, 'index']);
 Route::get('delete_user_posts',[App\Http\Controllers\UserController::class, 'create']);
+
 Route::get('active_users',[App\Http\Controllers\UserController::class, 'get_user']);
 
 
@@ -108,6 +127,8 @@ Route::get('send-email',[EmailController::class,'sendEmail']);
 
     Route::get('/change-password', [App\Http\Controllers\Admin\ChangePasswordController::class, 'edit'])->name('password.edit');
     Route::post('/change-password', [App\Http\Controllers\Admin\ChangePasswordController::class, 'update'])->name('password.update');
+
+
     Route::get('profile',[ProfileController::class, 'index'])->name('profile.index');
     Route::get('users',[UserController::class, 'index'])->name('users.index');
     Route::get('user/edit/{id}',[UserController::class, 'edit'])->name('user.edit');

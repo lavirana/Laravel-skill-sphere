@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Events\UserRegistered;
 
 class PostController extends Controller
 {
@@ -18,6 +19,8 @@ $post = Post::create([
         ]);
             $post->tags()->attach(6);
 
+            event(new UserRegistered($post)); // 🔔 this triggers the listener
+
         return $post;
     }
 
@@ -29,6 +32,21 @@ $post = Post::create([
     public function show(){
         $post = Post::with('latestComment')->find(1);
         return $post;
+    }
+
+    public function edit(Post $post)
+    {
+        $this->authorize('edit-post', $post);
+        return view('posts.edit', compact('post'));
+    }
+
+    public function update(Request $request, Post $post)
+    {
+        $this->authorize('edit-post', $post);
+        
+        $post->update($request->only(['title', 'description', 'image', 'slug']));
+        
+        return redirect()->route('posts.index')->with('success', 'Post updated successfully.');
     }
 
 

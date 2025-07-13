@@ -8,6 +8,11 @@ use App\Observers\UserObserver;
 
 class EventServiceProvider extends ServiceProvider
 {
+    protected $listen = [
+        \App\Events\UserRegistered::class => [
+            \App\Listeners\SendWelcomeEmail::class,
+        ],
+    ];
     /**
      * Register services.
      */
