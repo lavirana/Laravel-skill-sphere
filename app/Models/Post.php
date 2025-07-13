@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
+use App\Observers\PostObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Passport\HasApiTokens;
 
+
+#[ObservedBy([PostObserver::class])]
 class Post extends Model
 {
     protected $fillable = ['title', 'description', 'image', 'slug', 'user_id'];

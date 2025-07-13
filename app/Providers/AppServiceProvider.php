@@ -27,11 +27,13 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap(); // 
 
-        Collection::macro('toUpper', function() {
-            return $this->map(function ($items) {
-                return strtoupper($items);
-            });
-        });
+       /**  Collection::macro('toUpper', function() {
+           *  $this->map(function ($items) {
+        *     return strtoupper($items);
+        *    });
+       * }); 
+       * */
+       
 
         Response::macro('success', function ($data) {
             return response()->json(['status' => 'success', 'data' => $data]);
@@ -44,7 +46,7 @@ class AppServiceProvider extends ServiceProvider
         Arr::macro('removeNulls', function ($array) {
             return array_filter($array, fn($item) => !is_null($item));
         });
-        
+
     }
 
 

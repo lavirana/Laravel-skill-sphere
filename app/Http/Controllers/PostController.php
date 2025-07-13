@@ -2,12 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\PostPublished;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Events\UserRegistered;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
+    public function show_create_post(){
+        return view('create_post');
+    }
+    public function create_post(Request $request){
+         $post = Post::create([
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'slug' =>  Str::slug($request->input('title')),
+            'user_id' => 2
+         ]);
+
+        PostPublished::dispatch($post); // 🔔 this triggers the listeners
+return back()->with('success', 'Post created successfully. An email notification has been sent to the admin.');
+    }
+
     
     public function create(){
 $post = Post::create([

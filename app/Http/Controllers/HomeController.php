@@ -60,9 +60,7 @@ class HomeController extends Controller
         return $uppername = $name->toUpper();
     }
 
-    public function check_macro2(){
-        return response()->success(['user' => 'Lavi']);
-    }
+
 
     public function check_macro3(){
         return Str::prefixHello('Lavi');
