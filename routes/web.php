@@ -138,3 +138,5 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('user/add', [UserController::class, 'create'])->name('user.add');
     Route::post('user/store', [UserController::class, 'store'])->name('user.store');
 });
+
+

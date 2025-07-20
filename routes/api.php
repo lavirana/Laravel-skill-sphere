@@ -14,3 +14,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('logout',[AuthController::class,'logout']);
     Route::apiResource('posts', PostController::class);
 });
+
+Route::group(['prefix' => 'auth'], function ($router) {
+    Route::post('jwt_login', [AuthController::class, 'jwt_login']);
+    Route::post('jwt_register', [AuthController::class, 'jwt_register']);
+});
+
+Route::middleware(['auth:api'])->group(function(){
+    Route::post('me', [AuthController::class, 'jwt_me']);
+    Route::post('logout', [AuthController::class, 'jwt_logout']);
+    Route::post('refresh', [AuthController::class, 'jwt_refresh']);
+});
