@@ -16,7 +16,7 @@
                             <h5 class="card-title">{{ $cat_courses->title }}</h5>
                             <p class="card-text">{{ Str::limit($cat_courses->description, 60) }}</p>
                             <!--<a href="#" class="btn btn-primary btn-sm">View</a>-->
-                            <a href="http://127.0.0.1:8000/course-detail/1" class="btn btn-primary btn-sm">View</a>
+                            <a href="http://127.0.0.1:8000/course-detail/{{ $cat_courses->id }}" class="btn btn-primary btn-sm">View</a>
                         </div>
                     </div>
                 </div>

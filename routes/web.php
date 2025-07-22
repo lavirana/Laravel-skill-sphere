@@ -12,12 +12,18 @@ use App\Http\Controllers\API\CourseSearchController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Admin\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\VideoController;
 use App\Models\Post;
 use App\Http\Middleware\ValidUser;
 use App\Http\Middleware\TestUser;
 use App\Livewire\SearchCourses;
 use App\Http\Controllers\OrderController;
+
+
+
+
+
 
 Route::get('/macro-test', function () {
     $data = collect(['hello', 'world']);
@@ -63,6 +69,8 @@ Route::post('ulogout', function () {
 })->name('ulogout');
 Route::get('edit_profile', [App\Http\Controllers\UserController::class, 'edit_profile'])->middleware('auth')->name('edit_profile');
 Route::post('update_profile', [App\Http\Controllers\UserController::class, 'update_profile'])->middleware('auth')->name('update_profile');
+
+Route::post('/add-to-cart', [CartController::class, 'add'])->middleware('auth')->name('cart.add');
 
 
 Route::get('test_ajax', [App\Http\Controllers\CourseSearchController::class, 'index']);
@@ -137,6 +145,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('user/update/{id}', [UserController::class, 'update'])->name('user.update');
     Route::get('user/add', [UserController::class, 'create'])->name('user.add');
     Route::post('user/store', [UserController::class, 'store'])->name('user.store');
+    
+
+
+
 });
 
 
