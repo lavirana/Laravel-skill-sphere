@@ -71,6 +71,9 @@ Route::get('edit_profile', [App\Http\Controllers\UserController::class, 'edit_pr
 Route::post('update_profile', [App\Http\Controllers\UserController::class, 'update_profile'])->middleware('auth')->name('update_profile');
 
 Route::post('/add-to-cart', [CartController::class, 'add'])->middleware('auth')->name('cart.add');
+Route::get('/cart/pending-count', [CartController::class, 'get_pending_count']);
+Route::get('/cart/check-course', [CartController::class, 'check_course_exists']);
+Route::get('/my_cart', [CartController::class, 'index'])->name('cart.index')->middleware('auth');
 
 
 Route::get('test_ajax', [App\Http\Controllers\CourseSearchController::class, 'index']);

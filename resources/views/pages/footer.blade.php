@@ -65,6 +65,59 @@
     })
   });
 </script>
+<script>
+  $(document).ready(function() {
+    var user_id = "{{ auth()->id() ?? 'null' }}";
+     if(user_id){
+      $.ajax({
+        url: '/cart/pending-count',
+            method: 'GET',
+            data: { user_id: user_id },
+            success: function(response) {
+                if (response.success && response.count > 0) {
+                    $('#cart-count-badge').removeClass('d-none').text(response.count);
+                }
+            },
+            error: function(xhr) {
+                console.error('Failed to fetch cart count');
+            }
+      });
+     }
+  });
+</script>
+
+
+  <script>
+$(document).ready(function() {
+    var userId = "{{ Auth::id() ?? 'null' }}";
+    var courseId = courseId || "{{ $course->id ?? 'null' }}"; // Ensure courseId is defined
+
+    if (userId) {
+        $.ajax({
+            url: '/cart/check-course',
+            method: 'GET',
+            data: {
+                user_id: userId,
+                course_id: courseId
+            },
+            success: function(response) {
+                if (response.exists) {
+                    $('#cart-btn-' + courseId).text('Go to Cart');
+                    $('#cart-btn-' + courseId).removeClass('add_to_cart').addClass('go_to_cart');
+                }
+            },
+            error: function(xhr) {
+                console.log("Error checking cart status.");
+            }
+        });
+    }
+
+    $(document).on('click', '.go_to_cart', function() {
+        window.location.href = '/my_cart'; // or wherever your cart page is
+    });
+
+});
+</script>
 </body>
 
 </html>

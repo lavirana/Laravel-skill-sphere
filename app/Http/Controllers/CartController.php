@@ -3,17 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\CartItem;
+use App\Models\category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
     public function index()
-    {
-        //
-    }
+{
+    $cartItems = CartItem::where('status', 'pending')
+        ->where('user_id', Auth::id())
+        ->get();
+    $all_categories = category::with('subcategories')->get();
+    return view('cart', compact('cartItems', 'all_categories'));
+}
 
     public function add(Request $request)
     {
@@ -88,5 +96,29 @@ class CartController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function get_pending_count(Request $request)
+    {
+        $count = CartItem::where('user_id', $request->user_id)
+            ->where('status', 'pending')
+            ->count();
+
+        return response()->json([
+            'success' => true,
+            'count' => $count
+        ]);
+    }
+
+    public function check_course_exists(Request $request)
+    {
+        $exists = CartItem::where('user_id', $request->user_id)
+            ->where('course_id', $request->course_id)
+            ->where('status', 'pending')
+            ->exists();
+
+        return response()->json([
+            'exists' => $exists
+        ]);
     }
 }

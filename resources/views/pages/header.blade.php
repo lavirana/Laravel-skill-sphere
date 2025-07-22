@@ -73,8 +73,11 @@
         
           <a href="#" class="text-white me-3 position-relative">
             <i class="fa fa-shopping-cart fa-lg"></i>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
+            <span id="cart-count-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none">
+              0
+            </span>
           </a>
+
           <!--<a href="#" class="text-white me-3"><i class="fa fa-user"></i></a>-->
           <!-- Profile dropdown -->
           <button class="btn btn-outline-dark dropdown-toggle d-flex align-items-center" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="color: var(--bs-btn-hover-color); background-color: var(--bs-btn-hover-bg); border-color: var(--bs-btn-hover-border-color);">

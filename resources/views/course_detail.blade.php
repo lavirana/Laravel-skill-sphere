@@ -17,7 +17,8 @@
                 <li class="list-group-item"><strong>Posted On:</strong> {{ $course->created_at->format('d M Y') }}</li>
             </ul>
 
-            <button class="btn btn-primary mt-3 add_to_cart"  data-course-id="{{ $course->id }}" data-user-id="{{ Auth::id() }}" data-price="{{ $course->price }}">Add to Cart</button>
+            <button id="cart-btn-{{ $course->id }}" class="btn btn-primary mt-3 add_to_cart" data-course-id="{{ $course->id }}" data-user-id="{{ Auth::id() }}" data-price="{{ $course->price }}"> Add to Cart </button>
+
             <a href="#" class="btn btn-success mt-3">Buy Now</a>
         </div>
     </div>
