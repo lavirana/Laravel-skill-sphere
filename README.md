@@ -21,7 +21,9 @@ TechCrafters is a full-featured online course marketplace inspired by Udemy, bui
 TechCrafters includes a secure admin dashboard built using AdminLTE. It allows platform managers to create, update, and delete categories, subcategories, and courses.
 
 📸 Screenshots
+
 Public Frontend (Home Page)
+
 <img width="1440" alt="Screenshot 2025-06-21 at 10 52 28 PM" src="https://github.com/user-attachments/assets/3c32a07e-524b-44d0-afe6-69e86b81b9ed" />
 
 <img width="1434" alt="Screenshot 2025-07-09 at 4 09 36 PM" src="https://github.com/user-attachments/assets/240d252c-8a3a-4d10-b07d-5a21cdd3e947" />
@@ -32,9 +34,12 @@ Public Frontend (Home Page)
 
 <img width="1435" alt="Screenshot 2025-07-10 at 6 50 38 AM" src="https://github.com/user-attachments/assets/ede64480-b526-4c8a-90c7-f95012c4fd05" />
 
+<img width="1440" height="778" alt="Screenshot 2025-07-28 at 6 18 13 PM" src="https://github.com/user-attachments/assets/507f90f7-209e-41c2-8dbf-1501dbc9fb83" />
+
 
 
 Admin Dashboard (Course Management)
+
 <img width="1440" alt="Screenshot 2025-06-21 at 10 49 21 PM" src="https://github.com/user-attachments/assets/7b3869fc-cb2f-4bc2-86b7-eecd3e3602d2" />
 
 <img width="1422" alt="Screenshot 2025-07-09 at 4 10 04 PM" src="https://github.com/user-attachments/assets/516912a2-3019-4737-a518-c067af1d5fba" />
