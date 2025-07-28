@@ -18,6 +18,17 @@
             </ul>
 
             <button id="cart-btn-{{ $course->id }}" class="btn btn-primary mt-3 add_to_cart" data-course-id="{{ $course->id }}" data-user-id="{{ Auth::id() }}" data-price="{{ $course->price }}"> Add to Cart </button>
+          <!--  <button class="btn btn-classic mt-3" style="border: 1px solid black;"><i class="fa fa-heart-o"></i></button>
+            <button class="btn btn-classic mt-3" style="border: 1px solid black; background-color:#d7fadf;"><i class="fa fa-heart" style="color: green;"></i></button>-->
+
+            <button id="wishlist-btn" 
+        class="btn btn-classic mt-3" 
+        style="border: 1px solid black;" 
+        data-course-id="{{ $course->id }}" 
+        data-in-wishlist="false">
+    <i class="fa fa-heart-o"></i>
+</button>
+
 
             <a href="#" class="btn btn-success mt-3">Buy Now</a>
         </div>

@@ -19,11 +19,7 @@ use App\Http\Middleware\ValidUser;
 use App\Http\Middleware\TestUser;
 use App\Livewire\SearchCourses;
 use App\Http\Controllers\OrderController;
-
-
-
-
-
+use App\Http\Controllers\WishlistController;
 
 Route::get('/macro-test', function () {
     $data = collect(['hello', 'world']);
@@ -74,6 +70,9 @@ Route::post('/add-to-cart', [CartController::class, 'add'])->middleware('auth')-
 Route::get('/cart/pending-count', [CartController::class, 'get_pending_count']);
 Route::get('/cart/check-course', [CartController::class, 'check_course_exists']);
 Route::get('/my_cart', [CartController::class, 'index'])->name('cart.index')->middleware('auth');
+
+Route::post('/wishlist/toggle', [WishlistController::class, 'toggle'])->name('wishlist.toggle');
+Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index')->middleware('auth');
 
 
 Route::get('test_ajax', [App\Http\Controllers\CourseSearchController::class, 'index']);

@@ -118,6 +118,74 @@ $(document).ready(function() {
 
 });
 </script>
+<script>
+    $(document).ready(function () {
+        $('#show-coupon').on('click', function () {
+            $('#coupon-form').slideDown(); // show input + apply button
+            $(this).hide(); // hide the "Apply Coupon" button
+        });
+
+        $('#apply-coupon').on('click', function () {
+            let coupon = $('#coupon-code').val().trim();
+
+            if (coupon !== '') {
+                // You can send AJAX here or show message
+                alert('Coupon "' + coupon + '" applied!');
+
+                // Optional: disable form or provide feedback
+            } else {
+                alert('Please enter a coupon code');
+            }
+        });
+    });
+</script>
+
+  <script>
+    $(document).ready(function () {
+        $('#checkout-btn').on('click', function () {
+            $('#cart-summary').hide(); // hide cart
+            $('#checkout-section').slideDown(); // show checkout
+        });
+    });
+</script>
+
+<script>
+  $(document).ready(function () {
+    $('#wishlist-btn').on('click', function () {
+        var button = $(this);
+        var courseId = button.data('course-id');
+        var inWishlist = button.data('in-wishlist');
+
+        $.ajax({
+            url: '/wishlist/toggle',
+            type: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                course_id: courseId
+            },
+            success: function (response) {
+                if (response.status === 'added') {
+                    // Change to green filled heart
+                    button.html('<i class="fa fa-heart" style="color: green;"></i>');
+                    button.css('background-color', '#d7fadf');
+                    button.data('in-wishlist', true);
+                } else if (response.status === 'removed') {
+                    // Change to empty heart
+                    button.html('<i class="fa fa-heart-o"></i>');
+                    button.css('background-color', '');
+                    button.data('in-wishlist', false);
+                }
+            },
+            error: function () {
+                alert('Something went wrong.');
+            }
+        });
+    });
+});
+
+</script>
+
+
 </body>
 
 </html>
