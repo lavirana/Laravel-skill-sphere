@@ -16,7 +16,8 @@ class CartController extends Controller
 
     public function index()
 {
-    $cartItems = CartItem::where('status', 'pending')
+    $cartItems = CartItem::with(['courses', 'user'])
+        ->where('status', 'pending')
         ->where('user_id', Auth::id())
         ->get();
     $all_categories = category::with('subcategories')->get();
